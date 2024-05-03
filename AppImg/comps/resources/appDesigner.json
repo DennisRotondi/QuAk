@@ -1,0 +1,23 @@
+{
+  "components": [
+    {
+      "className": "LabelEntry",
+      "componentName": "LabelEntry",
+      "description": "Properties that correspond to underlying components",
+      "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsSAAALEgHS3X78AAABGUlEQVRIiWNsaGj4z0ACqK+vZwSp7ujouPPz509lbDrZ2dnvVlRUqIDYLAwQTUTZsHz5cjgbZDgufY2NjXCLWWAMR0cnnAbv378Pq/i3b98IOgpuAS5DcAFQMHR3d+MMIpJ8gM0BsDCmmQ9IimQGMuKA5Egm1QcMpEYyqXFALBgcqQib5TRPRcQCiuKA1bUVazn2e3c1I9V80NWRicIvq5iOwmdRU1NDKcSoDVgiIyMZaWY6AwMDEy0NBwHG9vZ2nGUKCCCXKyCgWMaJNWIrV//Bqp8FX5kCAsjlCgy0Fbeh8Kt6q8B0SOsUFPE11TmQVERMmUIuoHkc0NwCFnyFFgggF1wwAAtzdAAKc3TA+P8/Sa0W0gADAwMAacOCsonAW8UAAAAASUVORK5CYII=",
+      "category": "My Components",
+      "authorName": "",
+      "authorEmail": "",
+      "version": "1.0",
+      "avatar": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIcAAAAZCAIAAACU6apuAAAAB3RJTUUH6AIcExgiH9dMnAAAAjJJREFUaIHtmc/rIWEcxz+ztnaK+k5KOZmDixzGgclBws0/4CoX0shN4SIhyV0OjlJKKQeFi3KRyMGcJOVHikJD0W6RPUxtW/ttvzvLtk88r+YwvZt5ek+vnplneghBEACDGJ/+dwHMO2ArKIKtoAi2giLYCopgKyjyOyuXy4WiqNVq9eEoNE3/yWX5fD4YDEpo96rguYIikq3cbrdoNGowGBiG4TjucrmIebVaNRqNOp0ul8uJSbPZtFgsLMu6XK71ev3I1shAZjJvFPXrQWYy9wwr2Uqj0Wi3271er9/vj0ajWq0m5pPJZDAY1Ov1ZDK5XC43m43P5ysUCv1+32azhUKhe1q+Gp+l3uB0Oq1WK0mSAGAymWazmZi73W6CILRaLcMww+HwfD6zLKvX6wHA4/HE4/Hr9frQ5s+MZCu73S4Wi43HY4IgFouF1+sVc5VKJZ5QFCUIwvF47Ha7DMOIoVwu3263jyr99Ei2kkqlAKDVaslksp8XVIIg0DQNAIfDQalUkiRpt9tLpdIDu74Okr8r+/1er9fLZDKe5zudzul0EvNyuQwA8/mc53mWZR0OR6/Xm06nADAcDsPh8GN7Pzcfz5UfbyEAqFQqgUDA7/cXi0Wj0ZhOpzmOM5vN1+tVo9FYLJbD4ZBIJNRqNQDkcjm3230+nxUKRTab/YcP8XQQeH/lHshM5st7i+BvkcjXSOSvh8VWUAT/26MItoIi2AqKYCsogq2gCLaCItgKinwHgZjFqTCcf6QAAAAASUVORK5CYII=",
+      "defaultPosition": [
+        1,
+        1,
+        135,
+        25
+      ]
+    }
+  ],
+  "schema": 2,
+  "MATLABRelease": "R2024a"
+}
