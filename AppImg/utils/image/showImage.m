@@ -1,7 +1,7 @@
 function showImage(app, axes, imagePath)
     % hack to force matlab to scale the image in order to fit
-    %app.UIFigure.Position(3:4) = [app.UIFigure.Position(3)+1, app.UIFigure.Position(4)+1];
-    %drawnow 
+    app.UIFigure.Position(3:4) = [app.UIFigure.Position(3)+1, app.UIFigure.Position(4)+1];
+    drawnow 
 
     app.currentImage = imshow(imagePath, 'Parent',axes);
     app.currentImage.HitTest = 'off';
@@ -11,6 +11,6 @@ function showImage(app, axes, imagePath)
     axes.YLim = [0 app.currentImage.YData(2)];
 
     % restore the original dimensions
-    %app.UIFigure.Position(3:4) = [app.UIFigure.Position(3)-1, app.UIFigure.Position(4)-1];
+    app.UIFigure.Position(3:4) = [app.UIFigure.Position(3)-1, app.UIFigure.Position(4)-1];
 end
 
