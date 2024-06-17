@@ -41,7 +41,7 @@ This function has the following arguments:
 - `input_dir`: Path to the directory containing the input images.
 - `output_dir`: Path to the directory where the generated masks will be saved.
 
-and usage example is: <br>
+An usage example is: <br>
 ```generate_masks_sam('segment-anything/scripts/amg.py', 'checkpoints/sam_vit_h_4b8939.pth', 'vit_h', 'dataset', 'masks')```
 
 Please make sure that your Python environment is the same one on which you have installed SAM. You can verify it in MATLAB with `pyenv`. You can change the MATLAB Python environment using `pyversion(<path_to_env>)`. On Unix-based systems, `<path_to_env>` corresponds to the output of `which python` from the terminal.
