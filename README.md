@@ -19,8 +19,9 @@ Install Segment Anything cloning the repository locally and install with
 git clone git@github.com:facebookresearch/segment-anything.git
 cd segment-anything; pip install -e .
 ```
+Download a model checkpoint [from here](https://github.com/facebookresearch/segment-anything#model-checkpoints).
 
-The following optional dependencies are necessary for mask post-processing, saving masks in COCO format, the example notebooks, and exporting the model in ONNX format. `jupyter` is also required to run the example notebooks.
+The following optional dependencies are necessary for mask post-processing, saving masks in COCO format, the example notebooks, and exporting the model in ONNX format.
 
 ```
 pip install opencv-python pycocotools matplotlib onnxruntime onnx
@@ -30,7 +31,19 @@ In the future, when MATLAB will support batch classification in SAM natively, yo
 
 ## How to use
 
-Once you have the dataset, for example [download ours](https://drive.google.com/file/d/19vB5AssFThRcATRs-bMuQqSh-O-h2nM5/view?usp=sharing), you need to generate masks using any segmentator.
-If you have installed SAM you can call our matlab function. Please make sure that your python environment is the same on which you have installed SAM. 
+(1) Once you have the dataset, for example [download ours](https://drive.google.com/file/d/19vB5AssFThRcATRs-bMuQqSh-O-h2nM5/view?usp=sharing), you need to generate masks using any segmentator of your choice.
 
-You can verify it in matlab with ```pyenv```, you can change MATLAB python environment using ```pyversion(<path_to_env>)```, on unix based systems <path_to_env> corresponds to the output of ```which python``` on the terminal
+If you have installed SAM, you can call our MATLAB function ```generate_masks_sam```. 
+This function has the following arguments:
+- `sam_script`:  Path to the segment-anything/scripts/amg.py script that runs the segment anything model.
+- `checkpoint_path`: Path to the checkpoint file for the model downloaded above.
+- `model_type`: Name of the model associated to the checkpoint downloaded above.
+- `input_dir`: Path to the directory containing the input images.
+- `output_dir`: Path to the directory where the generated masks will be saved.
+
+and usage example is: <br>
+```generate_masks_sam('segment-anything/scripts/amg.py', 'checkpoints/sam_vit_h_4b8939.pth', 'vit_h', 'dataset', 'masks')```
+
+Please make sure that your Python environment is the same one on which you have installed SAM. You can verify it in MATLAB with `pyenv`. You can change the MATLAB Python environment using `pyversion(<path_to_env>)`. On Unix-based systems, `<path_to_env>` corresponds to the output of `which python` from the terminal.
+
+(2) Once you have the mask, you can run the app_image and ...
