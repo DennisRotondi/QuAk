@@ -31,7 +31,7 @@ In the future, when MATLAB will support batch classification in SAM natively, yo
 
 ## How to use
 
-(1) Once you have the dataset, for example [download ours](https://drive.google.com/file/d/19vB5AssFThRcATRs-bMuQqSh-O-h2nM5/view?usp=sharing), you need to generate masks using any segmentator of your choice.
+(1) Once you have the dataset, for example [download ours](https://drive.google.com/file/d/1vYKT7q8JimahwEILucVmURDJXQJKkJck/view?usp=sharing), you need to generate masks using any segmentator of your choice.
 
 If you have installed SAM, you can call our MATLAB function ```generate_masks_sam```. 
 This function has the following arguments:
