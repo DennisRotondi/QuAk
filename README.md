@@ -1,5 +1,5 @@
 # QuAk: Quick Annotator Kit
-
+## A MATLAB® App for Semantically Annotating Large Datasets
 Fine-tuning requires data, and hand-labeling is tedious and time-consuming. The idea for the project arose from the need for quick segmentation and classification. Matlab provides a tool for data labeling, but the task can only be performed manually or using superpixels.
 Our tool, QuAk, can utilize state-of-the-art methods to rapidly generate a large number of segmented masks from an image. Then, through a simple GUI, one can select object areas and classify them using the keyboard. This allows dumping all the data in Matlab format and training an available segmentation and classification model directly in Matlab.
 
