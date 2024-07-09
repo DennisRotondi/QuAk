@@ -27,13 +27,13 @@ The following optional dependencies are necessary for mask post-processing, savi
 pip install opencv-python pycocotools matplotlib onnxruntime onnx
 ```
 
-In the future, when MATLAB will support batch classification in SAM natively, you can skip this step.
+In the future, when MATLAB® will support batch classification in SAM natively, you can skip this step.
 
 ## How to use
 
-(1) Once you have the dataset, for example [download ours](https://drive.google.com/file/d/1vYKT7q8JimahwEILucVmURDJXQJKkJck/view?usp=sharing), you need to generate masks using any segmentator of your choice.
+1) Once you have the dataset, for example [download ours](https://drive.google.com/file/d/1vYKT7q8JimahwEILucVmURDJXQJKkJck/view?usp=sharing), you need to generate masks using any segmentator of your choice.
 
-If you have installed SAM, you can call our MATLAB function ```generate_masks_sam```. 
+If you have installed SAM, you can call our MATLAB® function ```generate_masks_sam```. 
 This function has the following arguments:
 - `sam_script`:  Path to the segment-anything/scripts/amg.py script that runs the segment anything model.
 - `checkpoint_path`: Path to the checkpoint file for the model downloaded above.
@@ -44,6 +44,15 @@ This function has the following arguments:
 An usage example is: <br>
 ```generate_masks_sam('segment-anything/scripts/amg.py', 'checkpoints/sam_vit_h_4b8939.pth', 'vit_h', 'dataset', 'masks')```
 
-Please make sure that your Python environment is the same one on which you have installed SAM. You can verify it in MATLAB with `pyenv`. You can change the MATLAB Python environment using `pyversion(<path_to_env>)`. On Unix-based systems, `<path_to_env>` corresponds to the output of `which python` from the terminal.
+Please make sure that your Python environment is the same one on which you have installed SAM. You can verify it in MATLAB® with `pyenv`. You can change the MATLAB® Python environment using `pyversion(<path_to_env>)`. On Unix-based systems, `<path_to_env>` corresponds to the output of `which python` from the terminal.
 
-(2) Once you have the mask, you can run the app_image and ...
+2) Once you have the masks, install QuAK double clicking on QuAK.mlappinstall. This will add it to your list of apps. ALternatively, you can open quak.mlapp in App Designer, but you must locate your current directory in AppImg/. The app will then open and ask you to choose input and output folder. You shall use the one selected in step 1.
+   
+   > If you already started labelling images in the folder, your label definitions will be loaded, and a popup will appear so that you can choose to start where you left of, or to erase the labels and start fresh.
+   
+3) Once everything is set up, you will be met with the app interface. To finally get started, define any label you need in the rightmost panel. Then, you can start with the workflow for each image in the dataset:
+    1) Select an active label L.
+    2) click on an object of class L in the image. You will see that the corresponding mask will be highlighted in the image and the left auxiliary screen. If the mask covered the whole object, select the "Label" button or use the corresponding shortcut. Otherwise, continue clicking on uncovered parts of the objects until you are satisfied with the mask. Press "Label" and repeat this step for each instance of L in the image. If you are unsatisfied with a segmentation, you can always press "< Undo" to cancel the last action.
+    3) Do the same for each other label in the label set. Once done, press the "Next Image >" button to save the image and go to the next one.
+
+
