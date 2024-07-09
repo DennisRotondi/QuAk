@@ -46,7 +46,7 @@ An usage example is: <br>
 
 Please make sure that your Python environment is the same one on which you have installed SAM. You can verify it in MATLAB® with `pyenv`. You can change the MATLAB® Python environment using `pyversion(<path_to_env>)`. On Unix-based systems, `<path_to_env>` corresponds to the output of `which python` from the terminal.
 
-2) Once you have the masks, install QuAK double clicking on QuAK.mlappinstall. This will add it to your list of apps. ALternatively, you can open quak.mlapp in App Designer, but you must locate your current directory in AppImg/. The app will then open and ask you to choose input and output folder. You shall use the one selected in step 1.
+2) Once you have the masks, install QuAK double clicking on QuAK.mlappinstall. This will add it to your list of apps. Alternatively, you can open quak.mlapp in App Designer, but you must set your working directory in AppImg/. The app will then open and ask you to choose input and output folder. You shall use the one selected in step 1.
    
    > If you already started labelling images in the folder, your label definitions will be loaded, and a popup will appear so that you can choose to start where you left of, or to erase the labels and start fresh.
    
