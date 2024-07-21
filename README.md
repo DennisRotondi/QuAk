@@ -16,7 +16,7 @@ The code requires `python>=3.8`, as well as `pytorch>=1.7` and `torchvision>=0.8
 Install Segment Anything cloning the repository locally and install with
 
 ```
-git clone git@github.com:facebookresearch/segment-anything.git
+git clone https://github.com/facebookresearch/segment-anything.git
 cd segment-anything; pip install -e .
 ```
 Download a model checkpoint [from here](https://github.com/facebookresearch/segment-anything#model-checkpoints).
