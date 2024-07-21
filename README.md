@@ -1,15 +1,82 @@
-# QuAk: Quick Annotator Kit
+# QuAK: Quick Annotator Kit :baby_chick:
 ## A MATLAB® App for Semantically Annotating Large Datasets
-Fine-tuning requires data, and hand-labeling is tedious and time-consuming. The idea for the project arose from the need for quick segmentation and classification. Matlab provides a tool for data labeling, but the task can only be performed manually or using superpixels.
-Our tool, QuAk, can utilize state-of-the-art methods to rapidly generate a large number of segmented masks from an image. Then, through a simple GUI, one can select object areas and classify them using the keyboard. This allows dumping all the data in Matlab format and training an available segmentation and classification model directly in Matlab.
+Fine-tuning an object detection model requires data, and hand-labeling is tedious and time-consuming. This tool can speed up manual segmentation and classification of objects in an image by an order of magnitude.
 
-The ideal workflow is simple:
+Current state-of-the-art segmentation models are able to segment everything in an image, but these results are not usable for fine-tuning an object detection model. 
+This tool was born from the idea of using the masks obtained by modern segmentation models to make it easier to create a large number of usable segmentation masks and bounding boxes. With our application, we can select the objects in an image and quickly classify them. The results are already in a format usable by Matlab, making it easier than ever to train models directly in Matlab.
 
-- Collect a bunch of images that you want to segment for your task.
-- Generate many masks using a state-of-the-art solution. At the time of this project, for example, the Segment Anything Model (SAM). See below for instructions.
-- Use our Matlab tool to quickly merge the raw masks into consistent objects to finalize your segmentation, precisely selecting the objects you need and giving a label to each.
+The workflow is simple:
 
-## Installation SAM guide [[from official repo]](https://github.com/facebookresearch/segment-anything)
+- Collect the images that you want labelled.
+- Generate masks using a state-of-the-art model. At the time of this project, for example, we used the Segment Anything Model (SAM). See below for instructions.
+- Use QuAK to quickly obtain the desired segmentation masks by precisely selecting the objects you need and giving a label to each.
+
+## How to install :floppy_disk:
+Open the repository folder with Matlab and double click the `QuAK.mlappinstall` file inside the AppImg folder and that's it! You can now find QuAK under the APPS window directly in Matlab.
+
+## How to use :chart_with_upwards_trend:
+The program expects an input folder with the following structure:
+
+```
+input folder
+├─── img0.png
+├─── img1.png
+|   ...
+├─── img0
+|    ├─── 0.png
+|    ├─── 1.png
+|    ├─── ...
+├─── img1
+├─── ...
+├─── labels.json (optional)
+```
+
+where `img<i>.png` is an image to label and `img<i>` is a folder containing the masks obtained from a segmentation model, named `0.png`, `1.png`, and so on. Below we explain all the steps to install the SAM model and to create these masks easily.
+
+Once the input folder is ready QuAK can be launched. Once an input and output folders are selected (the output can be any empty folder) labeling can start.
+
+## Functionalities :closed_book:
+
+### Keeping your progress
+This program can be used to label hundreds of images at a time. Your current progress is saved whenever the next image is loaded, so at any time the program can be closed without fear of loosing your work. When reopening the program and selecting the output folder, if you already started using it  the program will ask you if you want to delete its contents or if you want to skip the already labelled images. The first option will reset your work, while the second one will check for the already labelled images in the input folder and load the next unlabelled image, making the transition from the previous labelling session immediate.
+
+### Interface
+Once the input and output folders are selected the main interface will open. 
+
+![Main interface](./resources/quak_interface.png)
+
+We now describe the main interface:
+
+1) The main image used for selecting the objects. Multiple clicks can be used to select different parts of an object.
+
+2) Window two shows the currently selected mask.
+
+3) Window three all the selected objects up to this point.
+
+4) The `Label` button (shortcut **spacebar**) is used to label the currently selected mask
+
+5) The `Undo` button (shortcut **b**) deselects the currently selected object or removes the previously labelled object.
+
+6) The `Next` button (shortcut **n**) saves the masks for the current image and loads the next one.
+
+7) This window can be used to select the desired label from the list. The `+` button can be used to create a new label. Another option is to add a file named *labels.json* in the input folder that specifies the labels to automatically create when launching the program. The file needs to specify the names that will be used for labeling and the color. The color is used by our program when selecting an object to help mkae sure the ibjects are labelled correctly. 
+The file should be structured as follows:
+
+Filename: ***labels.json***
+``` 
+{
+    "names": ["obj1", "obj2", "obj3"],
+    "colors": [[0,0.45,0.74],[1,1,0],[0.85,0.33,0]]
+}
+```
+
+8) The Menu can be used to change input and output folders, while Shortcuts shows you the keyboard shortcuts available.
+
+9) Here messages about the actions performed are shown.
+
+## Useful tips :mag:
+
+### Installation SAM guide [[from official repo]](https://github.com/facebookresearch/segment-anything)
 
 The code requires `python>=3.8`, as well as `pytorch>=1.7` and `torchvision>=0.8`. Please follow the instructions [here](https://pytorch.org/get-started/locally/) to install both PyTorch and TorchVision dependencies. Installing both PyTorch and TorchVision with CUDA support is strongly recommended.
 
@@ -29,9 +96,9 @@ pip install opencv-python pycocotools matplotlib onnxruntime onnx
 
 In the future, when MATLAB® will support batch classification in SAM natively, you can skip this step.
 
-## How to use
+### How to use SAM
 
-1) Once you have the dataset, for example [download ours](https://drive.google.com/file/d/1vYKT7q8JimahwEILucVmURDJXQJKkJck/view?usp=sharing), you need to generate masks using any segmentator of your choice.
+Once you have the dataset, for example you can [download ours](https://drive.google.com/file/d/1vYKT7q8JimahwEILucVmURDJXQJKkJck/view?usp=sharing), you need to generate masks using any segmentator of your choice.
 
 If you have installed SAM, you can call our MATLAB® function ```generate_masks_sam```. 
 This function has the following arguments:
@@ -42,17 +109,8 @@ This function has the following arguments:
 - `output_dir`: Path to the directory where the generated masks will be saved.
 
 An usage example is: <br>
-```generate_masks_sam('segment-anything/scripts/amg.py', 'checkpoints/sam_vit_h_4b8939.pth', 'vit_h', 'dataset', 'masks')```
+```
+generate_masks_sam('segment-anything/scripts/amg.py', 'checkpoints/sam_vit_h_4b8939.pth', 'vit_h', 'dataset', 'masks')
+```
 
 Please make sure that your Python environment is the same one on which you have installed SAM. You can verify it in MATLAB® with `pyenv`. You can change the MATLAB® Python environment using `pyversion(<path_to_env>)`. On Unix-based systems, `<path_to_env>` corresponds to the output of `which python` from the terminal.
-
-2) Once you have the masks, install QuAK double clicking on QuAK.mlappinstall. This will add it to your list of apps. Alternatively, you can open quak.mlapp in App Designer, but you must set your working directory in AppImg/. The app will then open and ask you to choose input and output folder. You shall use the one selected in step 1.
-   
-   > If you already started labelling images in the folder, your label definitions will be loaded, and a popup will appear so that you can choose to start where you left of, or to erase the labels and start fresh.
-   
-3) Once everything is set up, you will be met with the app interface. To finally get started, define any label you need in the rightmost panel. Then, you can start with the workflow for each image in the dataset:
-    1) Select an active label L.
-    2) click on an object of class L in the image. You will see that the corresponding mask will be highlighted in the image and the left auxiliary screen. If the mask covered the whole object, select the "Label" button or use the corresponding shortcut. Otherwise, continue clicking on uncovered parts of the objects until you are satisfied with the mask. Press "Label" and repeat this step for each instance of L in the image. If you are unsatisfied with a segmentation, you can always press "< Undo" to cancel the last action.
-    3) Do the same for each other label in the label set. Once done, press the "Next Image >" button to save the image and go to the next one.
-
-
