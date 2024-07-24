@@ -43,7 +43,7 @@ This program can be used to label hundreds of images at a time. Your current pro
 ### Interface
 Once the input and output folders are selected the main interface will open. 
 
-![Main interface](./resources/quak_interface.png)
+![Main interface](./resources/quak_screenshot.png)
 
 We now describe the main interface:
 
